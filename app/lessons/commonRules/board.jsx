@@ -1,12 +1,12 @@
 import { View, Text } from 'react-native'
 import React from 'react'
-import Header from './header'
+import Header from '../../header'
 import { Link } from 'expo-router'
 
 const Board = () => {
   return (
     <View>
-        <Header link='/commonRules' name='Шахматная доска'></Header>
+        <Header link='/lessons/commonRules/list' name='Шахматная доска'></Header>
         <Text>Board</Text>
     </View>
   )

@@ -7,10 +7,25 @@ const Header = (props) => {
     <View>
         <div style={{
             width: '100%',
-            backgroundColor: 'red',
+            height: '55px',
+            display: 'flex',
+            alignItems: 'center',
+            width: '100%',
+            backgroundColor: '#161212',
         }}>
-        <Link href={props.link}>Назад.</Link>
-        <Text>{props.name}</Text>
+        <Link href={props.link} style={{
+          color: 'white',
+          padding: '15px',
+        }}>
+          Назад.
+        </Link>
+        <Text href={props.link} style={{
+          color: 'white',
+          padding: '15px',
+          fontSize: '20px',
+        }}>
+          {props.name}
+        </Text>
         </div>
     </View>
   )
