@@ -24,24 +24,6 @@ const Pawn = () => {
   };
 
   setItem(2, true)
-
-  const touchIncrement = {
-    activeOpacity: 1,
-    underlayColor: 'green',                               
-    style: isPress ? styles.btnPress : styles.btnNormal, 
-    onHideUnderlay: () => setIsPress(false),
-    onShowUnderlay: () => setIsPress(true),
-    onPress: () => {if (current < lesson.length - 1) setCurrent(current + 1)},
-  }
-
-  const touchDecrement = {
-    activeOpacity: 1,
-    underlayColor: 'green',                               
-    style: isPress ? styles.btnPress : styles.btnNormal, 
-    onHideUnderlay: () => setIsPress(false),
-    onShowUnderlay: () => setIsPress(true),
-    onPress: () => {if (current > 0) setCurrent(current - 1)},
-  };
   
   return (
     <View style={{minHeight: '100%'}}>

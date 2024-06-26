@@ -18,26 +18,26 @@ const Pawn = () => {
     }
   };
 
-  setItem(4, true)
+  setItem(4, true) // Запись в локальное хранилище информации о прохождении урока
 
   const [isPress, setIsPress] = useState(false)
-  const [current, setCurrent] = useState(0)
+  const [current, setCurrent] = useState(0) // Индекс слайда
   const lesson = [
     'Чаще всего пешка ходит на одну клетку вперёд, если та не занята другой фигурой. Белые пешки ходят В сторону восьмой горизонтали, черные в сторону первой.',
     'Если пешка ещё не ходила, то своим первым ходом она может передвинутся на две свободные клетки вперёд.',
     'Пешка может рубить фигуры противника на одну клетку по диагонали.',
     'Если пешка противника сделала ход на 2 клетки вперёд и оказалось на 1 клетку сбоку от нашей пешки, то мы можем срубить её таким образом, как будто она сделала ход на одну клетку вперёд. Такой ход называется взятием на проходе.',
     'Достигнув последней горизонтали пешка может превратиться в любую фигуру. Будьте внимательны, превращая вашу пешку, иногда лучше превратить её не в ферзя, а в другую фигуру чтобы поставить форсированный мат или избежать пата.'
-  ]
+  ] // Массив с текстовым содержанием уроков
 
   const touchIncrement = {
     activeOpacity: 1,
     underlayColor: 'green',                               
-    style: isPress ? styles.btnPress : styles.btnNormal, 
+    style: isPress ? styles.btnPress : styles.btnNormal, // Присвоение стиля в зависимости от нажатия на кнопку
     onHideUnderlay: () => setIsPress(false),
     onShowUnderlay: () => setIsPress(true),
-    onPress: () => {if (current < lesson.length - 1) setCurrent(current + 1)},
-  }
+    onPress: () => {if (current < lesson.length - 1) setCurrent(current + 1)}, // Если остались слайды прибавить единицу к текущему индексу
+  } // Настройки для кнопки переключения слайдов
 
   const touchDecrement = {
     activeOpacity: 1,
@@ -53,6 +53,7 @@ const Pawn = () => {
         <Header link='/lessons/pieces/list' name='Пешка'></Header>
         <div style={styles.container}>
           <div style={styles.lesson__wrapper}>
+            {/* Отображение нужного изображения в зависимости от индекса страницы */}
             <Image source={require('../../images/1.png')} {...{style: current == 0 ? styles.lesson__image : {display: 'none'}}}/>
             <Image source={require('../../images/2.png')} {...{style: current == 1 ? styles.lesson__image : {display: 'none'}}}/>
             <Image source={require('../../images/3.png')} {...{style: current == 2 ? styles.lesson__image : {display: 'none'}}}/>
@@ -62,6 +63,7 @@ const Pawn = () => {
               <TouchableHighlight {...touchDecrement}>
                 <Text style={{color: 'white'}}>Назад</Text>
               </TouchableHighlight>
+              {/* Отображение активной страницы */}
               <div style={styles.lesson__rounds}>
                 <div {...{style: current == 0 ? styles.lesson__round_active : styles.lesson__round}}/>
                 <div {...{style: current == 1 ? styles.lesson__round_active : styles.lesson__round}}/>

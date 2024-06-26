@@ -6,6 +6,7 @@ import { Image } from 'react-native'
 import { styles } from '../../styles/styles'
 
 const CommonRules = () => {
+  // Ссылки на уроки
   return (
     <View style={{minHeight: '100%'}}>
         <Header link='/lessons/list' name='Основы шахмат'></Header>

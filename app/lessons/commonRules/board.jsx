@@ -16,7 +16,7 @@ const Pawn = () => {
   const [current, setCurrent] = useState(0)
   const lesson = [
     'Игра проходит на поле, состоящим из 64 разноцветных полей. Расстановка фигур в каждой игре всегда одинаковая, первыми свой ход делают белые. Вертикали обозначены буквами, горизонтали цифрами, таким образом каждое поле имеет свой индекс. Белый король стоит на поле е1.',
-  ]
+  ] //Массив с текстовым содержанием уроков
 
   const setItem = async (key, value) => {
     try {
@@ -26,26 +26,7 @@ const Pawn = () => {
     }
   };
 
-  setItem(1, true)
-
-
-  const touchIncrement = {
-    activeOpacity: 1,
-    underlayColor: 'green',                               
-    style: isPress ? styles.btnPress : styles.btnNormal, 
-    onHideUnderlay: () => setIsPress(false),
-    onShowUnderlay: () => setIsPress(true),
-    onPress: () => {if (current < lesson.length - 1) setCurrent(current + 1)},
-  }
-
-  const touchDecrement = {
-    activeOpacity: 1,
-    underlayColor: 'green',                               
-    style: isPress ? styles.btnPress : styles.btnNormal, 
-    onHideUnderlay: () => setIsPress(false),
-    onShowUnderlay: () => setIsPress(true),
-    onPress: () => {if (current > 0) setCurrent(current - 1)},
-  };
+  setItem(1, true) // Запись в локальное хранилище информации о прохождении урока
   
   return (
     <View style={{minHeight: '100%'}}>

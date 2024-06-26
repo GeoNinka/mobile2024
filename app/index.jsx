@@ -22,7 +22,7 @@ const index = () => {
         9: false,
         10: false,
         11: false
-    })
+    }) // Массив с пройденными уроками
 
     const setItem = async (key, value) => {
         try {
@@ -30,7 +30,7 @@ const index = () => {
         } catch (error) {
             console.error('Error setting item:', error);
         }
-    };
+    }; // Функция для записи значения в локальное хранилище 
 
     const getItem = async (key) => {
         try {
@@ -40,7 +40,7 @@ const index = () => {
             console.error('Error getting item:', error);
             return null;
         }
-    };
+    }; // Функция для получения значения из локального хранилиза
 
     useEffect(() => {
         let list = {
@@ -55,14 +55,14 @@ const index = () => {
             9: false,
             10: false,
             11: false
-        }
+        } // шаблон пройденных уроков
+
         for(let i = 1; i < 12; i++) {
             getItem(i).then((res) => {
                 list[i] = res
-            })
-            setProgression(list)
-        }
-        
+            }) // Перебор локального хранилища по ключам от 1 до 11 и запись в шаблон
+        } 
+        setProgression(list) // Присвоение стейту с прогрессом прохождения значения шаблона
     }, [setProgression])
 
     return(
@@ -125,6 +125,7 @@ const index = () => {
                 }}>
                     Прогресс уроков.
                 </Text>
+                {/* Прогресс уроков, стиль присваивается в зависимости от значения стейта с прогрессом */}
                 <div style={styles.lesson__rounds}>
                     <div {...{style: progression[1] == true ? styles.lesson__round_active : styles.lesson__round}}/>
                     <div {...{style: progression[2] == true ? styles.lesson__round_active : styles.lesson__round}}/>
@@ -137,7 +138,6 @@ const index = () => {
                     <div {...{style: progression[9] == true ? styles.lesson__round_active : styles.lesson__round}}/>
                     <div {...{style: progression[10] == true ? styles.lesson__round_active : styles.lesson__round}}/>
                     <div {...{style: progression[11] == true ? styles.lesson__round_active : styles.lesson__round}}/>
-
                 </div>
             </div>
 
