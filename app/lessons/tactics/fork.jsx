@@ -6,15 +6,14 @@ import { styles } from '../../styles/styles'
 import { TouchableHighlight } from 'react-native'
 import { useState } from 'react'
 import { Image } from 'react-native'
-
 import AsyncStorage from '@react-native-async-storage/async-storage'
 
-const Bishop = () => {
+const Pawn = () => {
+
   const [isPress, setIsPress] = useState(false)
   const [current, setCurrent] = useState(0)
   const lesson = [
-    'Слон ходит на любое число клеток по диагонали. Слон не может перепрыгивать другие фигуры. У каждого игрока по 2 слона, чернопольный и белопольный.',
-    'Слон рубик фигуру на клетке на которую встаёт сам.',
+    'Вилкой называется ситуация, когда фигура атакует сразу 2 фигуры противника, и отойдя одной из них от потеряет другую. В примере показано, как белые нападают на ладью и ферзя чёрных и готовы обменять коня на одну из более дорогих фигур.',
   ]
 
   const setItem = async (key, value) => {
@@ -25,7 +24,7 @@ const Bishop = () => {
     }
   };
 
-  setItem(6, true)
+  setItem(11, true)
 
   const touchIncrement = {
     activeOpacity: 1,
@@ -47,23 +46,10 @@ const Bishop = () => {
   
   return (
     <View style={{minHeight: '100%'}}>
-        <Header link='/lessons/pieces/list' name='Слон'></Header>
+        <Header link='/lessons/tactics/list' name='Вилка'></Header>
         <div style={styles.container}>
           <div style={styles.lesson__wrapper}>
-            <Image source={require('../../images/b1.png')} {...{style: current == 0 ? styles.lesson__image : {display: 'none'}}}/>
-            <Image source={require('../../images/b2.png')} {...{style: current == 1 ? styles.lesson__image : {display: 'none'}}}/>
-            <div style={styles.lesson__buttons}>
-              <TouchableHighlight {...touchDecrement}>
-                <Text style={{color: 'white'}}>Назад</Text>
-              </TouchableHighlight>
-              <div style={styles.lesson__rounds}>
-                <div {...{style: current == 0 ? styles.lesson__round_active : styles.lesson__round}}/>
-                <div {...{style: current == 1 ? styles.lesson__round_active : styles.lesson__round}}/>
-              </div>
-              <TouchableHighlight {...touchIncrement}>
-                <Text style={{color: 'white'}}>Дальше</Text>
-              </TouchableHighlight>
-            </div>
+            <Image source={require('../../images/fork.png')} {...{style: current == 0 ? styles.lesson__image : {display: 'none'}}}/>
             <Text style={{color: 'white', marginTop: '20px', maxWidth: '320px', textAlign: 'center'}}>{lesson[current]}</Text>
           </div>
         </div>
@@ -71,4 +57,4 @@ const Bishop = () => {
   )
 }
 
-export default Bishop
+export default Pawn

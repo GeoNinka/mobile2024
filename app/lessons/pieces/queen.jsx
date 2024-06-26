@@ -6,15 +6,15 @@ import { styles } from '../../styles/styles'
 import { TouchableHighlight } from 'react-native'
 import { useState } from 'react'
 import { Image } from 'react-native'
-
 import AsyncStorage from '@react-native-async-storage/async-storage'
 
 const Bishop = () => {
+
   const [isPress, setIsPress] = useState(false)
   const [current, setCurrent] = useState(0)
   const lesson = [
-    'Слон ходит на любое число клеток по диагонали. Слон не может перепрыгивать другие фигуры. У каждого игрока по 2 слона, чернопольный и белопольный.',
-    'Слон рубик фигуру на клетке на которую встаёт сам.',
+    'Ферзь ходит на любое число клеток в любую сторону. Ферзь не может перепрыгивать другие фигуры.',
+    'Ферзь рубит фигуру на клетке на которую встаёт сам.',
   ]
 
   const setItem = async (key, value) => {
@@ -25,7 +25,7 @@ const Bishop = () => {
     }
   };
 
-  setItem(6, true)
+  setItem(8, true)
 
   const touchIncrement = {
     activeOpacity: 1,
@@ -47,11 +47,11 @@ const Bishop = () => {
   
   return (
     <View style={{minHeight: '100%'}}>
-        <Header link='/lessons/pieces/list' name='Слон'></Header>
+        <Header link='/lessons/pieces/list' name='Ферзь'></Header>
         <div style={styles.container}>
           <div style={styles.lesson__wrapper}>
-            <Image source={require('../../images/b1.png')} {...{style: current == 0 ? styles.lesson__image : {display: 'none'}}}/>
-            <Image source={require('../../images/b2.png')} {...{style: current == 1 ? styles.lesson__image : {display: 'none'}}}/>
+            <Image source={require('../../images/q1.png')} {...{style: current == 0 ? styles.lesson__image : {display: 'none'}}}/>
+            <Image source={require('../../images/q2.png')} {...{style: current == 1 ? styles.lesson__image : {display: 'none'}}}/>
             <div style={styles.lesson__buttons}>
               <TouchableHighlight {...touchDecrement}>
                 <Text style={{color: 'white'}}>Назад</Text>

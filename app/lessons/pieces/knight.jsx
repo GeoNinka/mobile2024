@@ -9,12 +9,14 @@ import { Image } from 'react-native'
 
 import AsyncStorage from '@react-native-async-storage/async-storage'
 
-const Bishop = () => {
+const Knight = () => {
+
   const [isPress, setIsPress] = useState(false)
   const [current, setCurrent] = useState(0)
   const lesson = [
-    'Слон ходит на любое число клеток по диагонали. Слон не может перепрыгивать другие фигуры. У каждого игрока по 2 слона, чернопольный и белопольный.',
-    'Слон рубик фигуру на клетке на которую встаёт сам.',
+    'Конь может ходить на 2 клетку вперёд и на 1 вбок в любом направлении.',
+    'Конь может перепрыгивать другие фигуры, при это не важно, какого они цвета.',
+    'Конь рубит фигуры на поле, на которое становится сам, но не полях через которые он проходит.',
   ]
 
   const setItem = async (key, value) => {
@@ -25,7 +27,7 @@ const Bishop = () => {
     }
   };
 
-  setItem(6, true)
+  setItem(5, true)
 
   const touchIncrement = {
     activeOpacity: 1,
@@ -47,11 +49,12 @@ const Bishop = () => {
   
   return (
     <View style={{minHeight: '100%'}}>
-        <Header link='/lessons/pieces/list' name='Слон'></Header>
+        <Header link='/lessons/pieces/list' name='Конь'></Header>
         <div style={styles.container}>
           <div style={styles.lesson__wrapper}>
-            <Image source={require('../../images/b1.png')} {...{style: current == 0 ? styles.lesson__image : {display: 'none'}}}/>
-            <Image source={require('../../images/b2.png')} {...{style: current == 1 ? styles.lesson__image : {display: 'none'}}}/>
+            <Image source={require('../../images/k1.png')} {...{style: current == 0 ? styles.lesson__image : {display: 'none'}}}/>
+            <Image source={require('../../images/k2.png')} {...{style: current == 1 ? styles.lesson__image : {display: 'none'}}}/>
+            <Image source={require('../../images/k3.png')} {...{style: current == 2 ? styles.lesson__image : {display: 'none'}}}/>
             <div style={styles.lesson__buttons}>
               <TouchableHighlight {...touchDecrement}>
                 <Text style={{color: 'white'}}>Назад</Text>
@@ -59,6 +62,7 @@ const Bishop = () => {
               <div style={styles.lesson__rounds}>
                 <div {...{style: current == 0 ? styles.lesson__round_active : styles.lesson__round}}/>
                 <div {...{style: current == 1 ? styles.lesson__round_active : styles.lesson__round}}/>
+                <div {...{style: current == 2 ? styles.lesson__round_active : styles.lesson__round}}/>
               </div>
               <TouchableHighlight {...touchIncrement}>
                 <Text style={{color: 'white'}}>Дальше</Text>
@@ -71,4 +75,4 @@ const Bishop = () => {
   )
 }
 
-export default Bishop
+export default Knight
